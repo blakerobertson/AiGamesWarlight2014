@@ -1,0 +1,5 @@
+ROAD MAP
+
+* Consider: If you don't expect a win at all, don't attack - hold the position and start attacking elsewhere instead of throwing armies away
+
+* Placing armies: Add some logic to guess how many bonus armies the enemy actually gets each turn

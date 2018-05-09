@@ -1,0 +1,30 @@
+POSSIBLE STRATEGIES
+
+Picking Starting Regions
+---
+* Choose superregion with highest ratio of bonus/regions (Most efficient)
+	- Try using (bonus/(region^2)) - this way it's armies per region AND factors in the total number of regions
+
+* Choose superregion with lowest count of border regions (Most defendable)
+
+* Choose superregion with border regions close together (Most flexible)
+
+
+Picking Army Placement
+---
+1) Choose regions with potentially dangerous numbers of enemy armies adjacent, up to an amount that makes them not dangerous (i.e. can't conquer it in the next turn)
+
+2a) Any remainders go into regions adjacent to enemy/neutral regions in any superregion we don't have a region in yet
+2b) If we can't move into a new superregion, then any remainders go into regions adjacent to enemy/neutral regions in the next most desirable superregion
+
+
+Picking Army Movement
+---
+1) Assign a "height" to each region, where height 1 means there is an enemy region adjacent, and every other region is 1 greater than its highest neighbor
+	- Iterate through and assign all height 1's first, then all 2's, all 3's, etc
+
+2) For frontline regions => If an adjacent enemy region can be conquered without using so many armies that this one could be taken next turn, then attack, otherwise do not move
+	- If a SINGLE adjacent enemy region cannot be conquered by this one, but we have another region adjacent to the enemy that COULD conquer it after this one weakens it, then attack
+	- Requires tracking which of our regions have already attacked
+	
+3) For internal regions => Regions that are not height 1 should move all their armies to the neighbor with the lowest height
